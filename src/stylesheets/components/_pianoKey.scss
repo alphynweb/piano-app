@@ -1,0 +1,268 @@
+$blackKeyWidthRatio: 0.5; // Width of black key compared to white key
+$blackKeyOffset: 0; // Offset of first anmd last in group (fraction of width of black key)
+$whiteKeyBorder: 1px solid $black;
+$whiteKeyGap: 0.05; // Gap between white keys (fraction of white key width)
+
+.pianokey {
+    float: left;
+    height: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+
+    &.white {
+        background: $ivory;
+        color: $black;
+        border: $whiteKeyBorder;
+        border-radius: 0 0 3% 3%;
+
+
+        &.active {
+            // background: rgb(121, 0, 0);
+            // background: linear-gradient(0deg, rgb(121, 0, 0) 0%, rgba(121,0,0,1) 40%, rgb(177, 177, 177) 100%);
+            border-bottom: 15px solid $red;
+        }
+
+        
+        &.isPlaying {
+            background: $red;
+        }
+    }
+
+    &.black {
+        background: $black;
+        // background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgb(177, 177, 177) 100%);
+        background: $black-key-bg-color;
+        border-bottom: 2px solid $black-key-color;
+        border-radius: 0 0 7% 7%;
+
+        &.last-child {
+            margin-right: 0;
+        }
+
+        &>div { // Black inner section
+            display: block;
+            width: 70%;
+            height: 98%;
+            margin: auto;
+            background: rgb(0,0,0);
+            // background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgb(177, 177, 177) 100%);
+            background: $black-key-inner-bg-color;
+            // background: $blackKeyBg;
+            z-index: 100;
+            border-radius: 0 0 7% 7%;
+            box-sizing: border-box;
+
+            span { // Note name
+                color: $red;
+            }
+        }
+
+        &.active {
+            &>div {
+                border-bottom: 15px solid $red;
+                // background: rgb(121, 0, 0);
+                // background: linear-gradient(0deg, rgb(121, 0, 0) 0%, rgba(121,0,0,1) 40%, rgb(177, 177, 177) 100%);
+            }
+        }
+
+        &>span { // Triangle at bottom
+            display: none;
+            bottom: 0;
+            width: 100%;
+            height: 4%;
+            overflow: hidden;
+            padding-left: 50%;
+            padding-bottom: 50%;
+            box-sizing: border-box;
+            z-index: 50;
+            position: relative;
+            top: -4%;
+
+            &:after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                margin-left:-500px;
+                border-left: 500px solid transparent;
+                border-right: 500px solid transparent;
+                border-bottom: 500px solid rgb(212, 212, 212);
+                z-index: 50;
+            }
+        }
+
+        &.isPlaying {
+
+            &>div {
+                background: $red;
+            }
+        }
+    }
+
+    &:first-child {
+        border-left: 1px solid;
+    }
+
+    &.active {
+        // border-bottom: 20px solid green;
+    }
+
+    &.oneoctave {
+        $baseWhiteKeyWidth: calc(100% / 8);
+        $totalWhiteKeyGapWidth: calc((#{$whiteKeyGap} * #{$baseWhiteKeyWidth}) * 14);
+        $whiteKeyWidth: calc((100% - #{$totalWhiteKeyGapWidth}) / 8);
+        $whiteKeyGapWidth: calc(#{$whiteKeyWidth} * #{$whiteKeyGap});
+        $blackKeyWidth: calc(#{$whiteKeyWidth} * #{$blackKeyWidthRatio}); // TODO - Work out proper width
+
+        $blackKeyGap: calc(#{$whiteKeyWidth} - (#{$blackKeyWidth}));
+        $blackKeyGapFirst: calc((#{$whiteKeyWidth} * 2) - #{$blackKeyWidth});
+
+        &.white {
+            width: $whiteKeyWidth;
+            margin-left: $whiteKeyGapWidth;
+        }
+        
+        &.black {
+            width: $blackKeyWidth;
+            margin-left: calc(#{$whiteKeyWidth} - #{$blackKeyWidth});
+    
+            &.firstingroup {
+                margin-left: $blackKeyGapFirst;
+                position: relative;
+                right: calc(#{$blackKeyWidth} * #{$blackKeyOffset});
+            }
+
+            &.lastingroup {
+                position: relative;
+                left: calc(#{$blackKeyWidth} * #{$blackKeyOffset});
+            }
+    
+            &:first-child {
+                margin-left: calc(#{$whiteKeyWidth} - (#{$blackKeyWidth} / 2));
+            }
+        }
+    }
+
+    &.twooctave {
+        $baseWhiteKeyWidth: calc(100% / 15);
+        $totalWhiteKeyGapWidth: calc((#{$whiteKeyGap} * #{$baseWhiteKeyWidth}) * 14);
+        $whiteKeyWidth: calc((100% - #{$totalWhiteKeyGapWidth}) / 15);
+        $whiteKeyGapWidth: calc(#{$whiteKeyWidth} * #{$whiteKeyGap});
+        $blackKeyWidth: calc(#{$whiteKeyWidth} * #{$blackKeyWidthRatio}); // TODO - Work out proper width
+
+        $blackKeyGap: calc(#{$whiteKeyWidth} - #{$blackKeyWidth});
+        $blackKeyGapFirst: calc((#{$whiteKeyWidth} * 2) - #{$blackKeyWidth});
+
+        &.white {
+            width: $whiteKeyWidth;
+            margin-left: $whiteKeyGapWidth;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+        
+        &.black {
+            width: $blackKeyWidth;
+            margin-left: calc(#{$whiteKeyWidth} - #{$blackKeyWidth} + #{$whiteKeyGapWidth});
+    
+            &.firstingroup {
+                position: relative;
+                right: calc(#{$blackKeyWidth} * #{$blackKeyOffset});
+            }
+
+            &.lastingroup {
+                position: relative;
+                left: calc(#{$blackKeyWidth} * #{$blackKeyOffset});
+            }
+
+            &:nth-child(5n + 6) { // C#
+                margin-left: calc(#{$blackKeyGapFirst} + (#{$whiteKeyGapWidth} * 2));
+            }
+
+            &:nth-child(5n + 2) { // D#
+                margin-left: calc(#{$blackKeyGap} + (#{$whiteKeyGapWidth}));
+            }
+
+            &:nth-child(5n + 3) { // F#
+                margin-left: calc(#{$blackKeyGapFirst} + (#{$whiteKeyGapWidth} * 2));                
+            }
+
+            &:nth-child(5n + 4) { // G#
+                margin-left: calc(#{$blackKeyGap} + #{$whiteKeyGapWidth});                
+            }
+
+            &:nth-child(5n + 5) { // A#
+                margin-left: calc(#{$blackKeyGap} + #{$whiteKeyGapWidth});                
+            }
+
+            &:first-child {
+                margin-left: calc(#{$whiteKeyWidth} - (#{$blackKeyWidth} / 2) + #{$whiteKeyGapWidth});
+            }
+        }
+    }
+
+    &.threeoctave {
+        $baseWhiteKeyWidth: calc(100% / 22);
+        $totalWhiteKeyGapWidth: calc((#{$whiteKeyGap} * #{$baseWhiteKeyWidth}) * 21);
+        $whiteKeyWidth: calc((100% - #{$totalWhiteKeyGapWidth}) / 22);
+        $whiteKeyGapWidth: calc(#{$whiteKeyWidth} * #{$whiteKeyGap});
+        $blackKeyWidth: calc(#{$whiteKeyWidth} * #{$blackKeyWidthRatio}); // TODO - Work out proper width
+
+        $blackKeyGap: calc(#{$whiteKeyWidth} - #{$blackKeyWidth});
+        $blackKeyGapFirst: calc((#{$whiteKeyWidth} * 2) - #{$blackKeyWidth});
+
+        &.white {
+            width: $whiteKeyWidth;
+            margin-left: $whiteKeyGapWidth;
+            
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+        
+        &.black {
+            width: $blackKeyWidth;
+            margin-left: calc(#{$whiteKeyWidth} - #{$blackKeyWidth} + #{$whiteKeyGapWidth});
+    
+            &.firstingroup {
+                position: relative;
+                right: calc(#{$blackKeyWidth} * #{$blackKeyOffset});
+            }
+
+            &.lastingroup {
+                position: relative;
+                left: calc(#{$blackKeyWidth} * #{$blackKeyOffset});
+            }
+
+            &:nth-child(5n + 6) { // C#
+                margin-left: calc(#{$blackKeyGapFirst} + (#{$whiteKeyGapWidth} * 2));
+            }
+
+            &:nth-child(5n + 2) { // D#
+                margin-left: calc(#{$blackKeyGap} + (#{$whiteKeyGapWidth}));
+            }
+
+            &:nth-child(5n + 3) { // F#
+                margin-left: calc(#{$blackKeyGapFirst} + (#{$whiteKeyGapWidth} * 2));                
+            }
+
+            &:nth-child(5n + 4) { // G#
+                margin-left: calc(#{$blackKeyGap} + #{$whiteKeyGapWidth});                
+            }
+
+            &:nth-child(5n + 5) { // A#
+                margin-left: calc(#{$blackKeyGap} + #{$whiteKeyGapWidth});                
+            }
+
+            &:first-child {
+                margin-left: calc(#{$whiteKeyWidth} - (#{$blackKeyWidth} / 2) + #{$whiteKeyGapWidth});
+            }
+        }
+    }
+    
+
+}
+

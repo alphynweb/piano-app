@@ -1,0 +1,27 @@
+.controlSection {
+    // border: $base-border;
+    padding: 1rem;
+
+    &.active {
+        background: grey;
+    }
+
+    h2 {
+        font-size: $base-font-size * 1.2;
+        margin: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    h3 {
+        font-size: $base-font-size;
+        margin: 0.3rem 0;
+    }
+
+    .scaleChordSection {
+        display: inline-block;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+

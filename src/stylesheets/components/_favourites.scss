@@ -1,0 +1,70 @@
+.favourites {
+
+    ul {
+
+        li {
+            background: $favourite-bg-color;
+            border: $base-border;
+            border-radius: $base-border-radius;
+            cursor: pointer;
+            display: inline-block;
+            width: auto;
+            padding-right: 1rem;
+            margin: 2px;
+
+            span {
+                display: inline-block;
+                color: $favourite-color;
+                width: auto;
+                padding: $base-padding;
+
+                &.delete {
+                    display: inline-block;
+                    color: $favourite-delete-color;
+                    position: relative;
+                    padding: 0;
+
+                    &:after {
+                        visibility: hidden;
+                        display: block;
+                        content: 'Delete';
+                        background-color: $black;
+                        color: $ivory;
+                        text-align: center;
+                        padding: 1rem;
+                        border-radius: $base-border-radius;
+                        position: absolute;
+                        top: -55px;
+                        left: -80px;
+                    }
+
+                    &:hover {
+
+                        &:after {
+                            visibility: visible;
+                        }
+                    }
+                }
+            }
+
+            
+            &:hover {
+                background: lighten($favourite-bg-color, 20%);
+                cursor: pointer;
+            }
+        
+            &.active {
+                background: $button-active;
+                border-color: $button-bg-color;
+
+                span {
+
+                    &.delete {
+                        color: $ivory;
+                    }
+                }
+            }
+        }
+    }
+}
+

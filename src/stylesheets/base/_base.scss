@@ -1,0 +1,19 @@
+*, html {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.controlsLhColumn {
+    float: left;
+    width: 60%;
+}
+
+.controlsRhColumn {
+    float: right;
+    width: 40%;
+}

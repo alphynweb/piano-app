@@ -1,0 +1,108 @@
+ul.navigationItems {
+    display: inline-block;
+    height: 100%;
+
+    li {
+        display: inline-block;
+        font-size: 2rem;
+        cursor: pointer;
+        position: relative;
+        margin-left: 2rem;
+
+
+        &:after {
+            visibility: hidden;
+            display: block;
+            content: '';
+            background-color: $ivory;
+            color: $black;
+            text-align: center;
+            padding: 1rem;
+            border-radius: $base-border-radius;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            font-size: 1rem;
+            z-index: 99;
+            border: $base-border;
+        }
+
+        &:hover {
+
+            svg {
+
+                path {
+                    color: $navigation-hover-color;
+                }
+            }
+        }
+
+        &.user {
+
+            &:after {
+                content: 'User';
+            }
+        }
+
+        &.favourites {
+
+            &:after {
+                content: 'Favourites';
+            }
+        }
+
+        svg {
+
+            path {
+                color: $navigation-color;
+            }
+        }
+
+        ul { // Submenu 
+            visibility: hidden;
+            width: auto;
+            display: block;
+            position: absolute;
+            z-index: 99;
+            border: $base-border;
+            border-radius: $base-border-radius;
+
+            li {
+                width: auto;
+                height: 2rem;
+                display: block;
+                font-size: $base-font-size;
+                line-height: $base-font-size;
+                padding: 0.5rem 1rem;
+                margin: 0;
+                top: 0;
+                white-space: nowrap;
+                border-bottom: $base-border;
+                color: $submenu-color;
+                background: $submenu-bg-color;
+                border-radius: none;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                &:hover {
+                    color: $submenu-hover-color;
+                    background: $submenu-hover-bg-color;
+                }
+
+                &.disabled {
+                    color: $submenu-disabled-color;
+                    background: $submenu-disabled-bg-color;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        &:hover {
+            ul {
+                visibility: visible;
+            }
+        }
+    }
+}

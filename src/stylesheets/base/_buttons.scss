@@ -1,0 +1,22 @@
+.button, button {
+    background: $button-bg-color;
+    color: $button-color;
+    border: $base-border;
+    border-radius: 3px;
+    padding: $base-padding;
+    margin: 2px;
+
+    &:hover {
+        background: lighten($button-bg-color, 20%);
+        cursor: pointer;
+    }
+
+    &.active, &:focus {
+        background: $button-active;
+        border-color: $button-bg-color;
+    }
+
+    &.fullWidth {
+        width: 100%;
+    }
+}

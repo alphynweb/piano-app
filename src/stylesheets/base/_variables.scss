@@ -1,0 +1,87 @@
+$base-font-family: arial, sans-serif;
+
+$base-font-size: 1rem;
+
+$base-padding: 1rem;
+
+// Colours
+$black: black;
+$grey: lighten($black, 20%);
+$ivory: ivory;
+$red: rgb(167, 0, 0);
+
+$base-bg-color: $ivory;
+$secondary-bg-color: $black;
+
+$base-font-color: $black;
+$secondary-font-color: $ivory;
+
+$action-color: $red;
+$error-color: $red;
+
+$white-key-bg-color: $ivory;
+$black-key-bg-color: linear-gradient(180deg, $black 0%, $black 40%, lighten($black, 70%) 100%);
+$black-key-inner-bg-color: linear-gradient(0deg, $black 0%, $black 40%, lighten($black, 70%) 100%);
+
+$white-key-color: $base-font-color;
+$black-key-color: $base-font-color;
+
+$popup-width: 50%;
+$popup-bg-color: $secondary-bg-color;
+$popup-color: $secondary-font-color;
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
+
+// Other Sizes
+$base-spacing: $base-line-height * 1rem;
+$small-spacing: $base-spacing / 2;
+$base-z-index: 0;
+
+// Animations
+$base-duration: 200ms;
+$base-timing: ease-in-out;
+
+// Borders 
+$base-border-color: $red;
+$base-border: 1px solid $base-border-color;
+$base-border-radius: 3px;
+
+// Forms
+// Horizontal offset, Vertical offset, blur, spread
+$form-box-shadow: inset 0 0 3px $base-border-color;
+// Horizontal offset, Vertical offset, blur, spread
+$form-box-shadow-focus: 0 0 3px 2px $base-border-color;
+
+// Buttons 
+$button-bg-color: $black;
+$button-color: $ivory;
+$button-active: $red;
+$button-activepassive: $grey;
+
+// Favourites
+$favourite-bg-color: $button-bg-color;
+$favourite-color: $button-color;
+$favourite-active: $button-active;
+$favourite-delete-color: $button-active;
+$favourite-delete-active-color: $favourite-color;
+
+// Top bar
+$topBar-height: 4rem;
+$topBar-padding: 2rem 0 0 0;
+
+// Navigation
+$navigation-color: $ivory;
+$navigation-hover-color: $red;
+
+// Sub menu
+$submenu-color: $grey;
+$submenu-bg-color: $ivory;
+$submenu-hover-color: $ivory;
+$submenu-hover-bg-color: $red;
+$submenu-disabled-color: $red;
+$submenu-disabled-bg-color: $grey;
+
+// User Details
+$user-details-color: $ivory;

@@ -1,0 +1,83 @@
+form {
+
+    input[type] {
+        background-color: $base-bg-color;
+        border: $base-border;
+        border-color: $base-font-color;
+        box-sizing: border-box;
+        transition: border-color $base-duration $base-timing;
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: $small-spacing;
+
+        &:hover {
+            border-color: shade($base-border-color, 20%);
+        }
+
+        &:focus {
+            border-color: $base-border-color;
+            box-shadow: $form-box-shadow-focus;
+            outline: none;
+        }
+
+        &:disabled {
+            background-color: shade($base-bg-color, 5%);
+            cursor: not-allowed;
+
+            &:hover {
+            border: $base-border;
+            }
+        }
+
+        &[type='checkbox'] {
+            width: auto;
+            margin-left: 1rem;
+            -webkit-appearance: none;
+            padding: $base-padding * 0.7;
+            border-color: $base-font-color;
+            border-radius: 3px;
+            display: inline-block;
+            position: relative;
+            top: 1rem;
+            box-shadow: none;
+
+            &:active, &:checked:active {
+                
+            }
+
+            &:checked {
+                border-color: $base-border-color;
+                box-shadow: $form-box-shadow-focus;
+            }
+
+            &:checked:after {
+                content: '\2714';
+                font-size: 1rem;
+                position: absolute;
+                top: 0px;
+                left: 0.3rem;
+                color: $base-font-color;
+            }
+        }
+    }
+
+    label {
+        display: inline-block;
+        line-height: 2rem;
+        color: $secondary-font-color;
+        text-align: left;
+    }
+}
+
+.formMessage {
+    color: $secondary-font-color;
+
+    span {
+        color: $action-color;
+        cursor: pointer;
+    }
+}
+
+.formError {
+    color: $error-color;
+}

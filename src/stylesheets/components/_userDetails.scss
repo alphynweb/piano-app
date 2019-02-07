@@ -1,0 +1,11 @@
+.userDetails {
+    float: right;
+    width: 50%;
+    height: $topBar-height;
+    text-align: right;
+    padding-right: 2rem;
+    
+    p {
+        color: $user-details-color;
+    }
+}

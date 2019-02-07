@@ -1,0 +1,19 @@
+.audioControls {
+    display: inline-block;
+
+    li {
+        display: inline-block;
+        font-size: 2rem;
+        cursor: pointer;
+        position: relative;
+        margin-left: 2rem;
+
+        svg, path {
+            color: $ivory;
+            
+            &:hover {
+                color: $red;
+            }
+        }
+    }
+}

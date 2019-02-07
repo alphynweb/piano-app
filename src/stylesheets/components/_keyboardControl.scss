@@ -1,0 +1,16 @@
+.button {
+    background: $button-bg-color;
+    color: $ivory;
+
+    &.active {
+        background: $button-active;
+    }
+
+    &.activepassive {
+        background: $button-activepassive;
+    }
+
+    &:disabled {
+        background: $grey;
+    }
+}

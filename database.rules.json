@@ -1,0 +1,19 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "settings": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": [
+        "localId"
+      ]
+    }
+  }
+}
